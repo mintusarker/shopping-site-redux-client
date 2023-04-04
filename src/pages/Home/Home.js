@@ -1,10 +1,11 @@
 import React from 'react';
+import Products from './product/Products';
 
 const Home = () => {
     return (
-        <div>
-            <p>home</p>
-        </div>
+            <div className=''>
+                <Products></Products>
+            </div>
     );
 };
 
