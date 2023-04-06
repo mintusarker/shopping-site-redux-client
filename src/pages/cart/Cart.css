@@ -1,0 +1,131 @@
+.cart-container {
+    padding: 2rem 6rem;
+}
+
+.cart-container h2 {
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+}
+
+.cart-container .titles {
+    margin: 2rem 0 2rem 0;
+    color: brown;
+    font-weight: 500;
+}
+
+.cart-container .titles h3 {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.cart-item,
+.cart-container .titles {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.cart-item {
+    border-top: 1px solid;
+    padding: 1rem 0;
+
+}
+
+.cart-container .titles .product-title {
+    padding-left: 0.5rem;
+}
+
+.cart-container .titles .total{
+    padding-right: 0.8rem;
+    justify-self: right;
+}
+
+.quantity{
+    padding-right: 0.8rem;
+    justify-self: right;
+}
+
+.cart-item .cart-product {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item .cart-product img {
+    width: 100px;
+    max-width: 150px;
+    margin-right: 1rem;
+}
+
+.cart-item .cart-product h3 {
+    font-weight: 500;
+}
+
+.cart-item .cart-product button {
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: -10px;
+    border: 1px solid;
+    width: 100px;
+    height: 35px;
+    border-radius: 4px;
+    justify-self: right;
+
+}
+
+.product-quantity button {
+    width: 60px;
+}
+
+.total {
+    justify-self: right;
+    padding-right: 15px;
+    font-weight: 600;
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+.cart-summary .clear-btn {
+    border: 1px solid;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.sub-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.8rem .5rem 0;
+    border-bottom: 1px solid;
+    font-weight: 600;
+}
+
+.cart-summary p {
+    margin-top: 1rem;
+}
+
+.checkout button {
+    border: 1px solid;
+    background-color: cornflowerblue;
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.shopping {
+    display: flex;
+    align-items: center;
+}
