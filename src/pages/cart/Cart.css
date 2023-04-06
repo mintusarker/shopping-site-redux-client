@@ -45,7 +45,7 @@
 
 .quantity{
     padding-right: 0.8rem;
-    justify-self: right;
+    justify-self: center;
 }
 
 .cart-item .cart-product {
@@ -77,7 +77,7 @@
     width: 100px;
     height: 35px;
     border-radius: 4px;
-    justify-self: right;
+    justify-self: center;
 
 }
 

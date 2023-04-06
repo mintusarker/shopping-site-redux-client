@@ -1,13 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiArrowLeft } from "react-icons/hi2";
 import './Cart.css'
+import { removeFromCart } from '../../features/products/CartSlice';
 
 
 const Cart = () => {
     const cart = useSelector(state => state.cart)
-    console.log(cart);
+    // console.log(cart);
+    const dispatch = useDispatch();
+
+    const handleRemoveFromCart =(cartItem)=> {
+        dispatch(removeFromCart(cartItem))
+    }
+
+
 
     return (
         <div className='cart-container'>
@@ -38,7 +46,7 @@ const Cart = () => {
                                         <div>
                                             <h3>{cartItem.name}</h3>
                                             <p>{cartItem.category}</p>
-                                            <button>Remove</button>
+                                            <button onClick={()=>handleRemoveFromCart(cartItem)}>Remove</button>
                                         </div>
                                     </div>
                                     <div className='product-price'>${cartItem.price}</div>
