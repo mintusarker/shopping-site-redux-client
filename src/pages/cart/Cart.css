@@ -38,12 +38,12 @@
     padding-left: 0.5rem;
 }
 
-.cart-container .titles .total{
+.cart-container .titles .total {
     padding-right: 0.8rem;
     justify-self: right;
 }
 
-.quantity{
+.quantity {
     padding-right: 0.8rem;
     justify-self: center;
 }
@@ -128,4 +128,31 @@
 .shopping {
     display: flex;
     align-items: center;
+}
+
+.cart-empty {
+    text-align: center;
+    margin: 5rem 0;
+}
+
+.cart-empty p {
+    font-weight: 500;
+    font-size: 25px;
+    color: rgb(205, 25, 25);
+    margin-bottom: 20px;
+}
+
+.start-shopping {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    gap: 5px;
+}
+.start-shopping span{
+    font-weight: 500;
+    border: 1px solid;
+    padding: 4px;
+    border-radius: 5px;
+    background-color: silver;
 }

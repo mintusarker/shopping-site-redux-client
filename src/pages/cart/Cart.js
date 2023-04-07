@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiArrowLeft } from "react-icons/hi2";
 import './Cart.css'
-import { removeFromCart } from '../../features/products/CartSlice';
+import { addToCart, clearCart, decreaseCartItem, removeFromCart } from '../../features/products/CartSlice';
 
 
 const Cart = () => {
@@ -11,24 +11,37 @@ const Cart = () => {
     // console.log(cart);
     const dispatch = useDispatch();
 
-    const handleRemoveFromCart =(cartItem)=> {
+    const handleRemoveFromCart = (cartItem) => {
         dispatch(removeFromCart(cartItem))
     }
 
+    const handleClearCart = () => {
+        dispatch(clearCart())
+    }
+
+    const handleDecreaseCartItem = (cartItem) => {
+        dispatch(decreaseCartItem(cartItem))
+    }
+
+    const handleIncreaseCartItem = (cartItem) => {
+        dispatch(addToCart(cartItem))
+    }
 
 
     return (
         <div className='cart-container'>
-            <h2>Shopping Cart</h2>
+            <h2 className='shop-cart'>Shopping Cart</h2>
             {
                 cart.cartItems.length === 0 ? (
                     <div className="cart-empty">
                         <p>Your cart is currently empty</p>
-                        <div className="start-shopping">
-                            <Link to='/'>
+                        <Link className='home' to='/'>
+                            <div className="start-shopping">
+                                <HiArrowLeft />
+
                                 <span>Start shopping</span>
-                            </Link>
-                        </div>
+                            </div>
+                        </Link>
                     </div>
                 ) : (<div>
                     <div className='titles'>
@@ -46,14 +59,14 @@ const Cart = () => {
                                         <div>
                                             <h3>{cartItem.name}</h3>
                                             <p>{cartItem.category}</p>
-                                            <button onClick={()=>handleRemoveFromCart(cartItem)}>Remove</button>
+                                            <button onClick={() => handleRemoveFromCart(cartItem)}>Remove</button>
                                         </div>
                                     </div>
                                     <div className='product-price'>${cartItem.price}</div>
                                     <div className='product-quantity'>
-                                        <button>-</button>
+                                        <button onClick={() => handleDecreaseCartItem(cartItem)}>-</button>
                                         <div className='count'>{cartItem.cartQuantity}</div>
-                                        <button>+</button>
+                                        <button onClick={() => handleIncreaseCartItem(cartItem)}>+</button>
                                     </div>
                                     <div className='total'>${cartItem.price * cartItem.cartQuantity} </div>
                                 </div>
@@ -61,7 +74,7 @@ const Cart = () => {
                         }
 
                         <div className="cart-summary">
-                            <button className='clear-btn'>Clear Cart</button>
+                            <button onClick={() => handleClearCart()} className='clear-btn'>Clear Cart</button>
                             <div className='checkout'>
                                 <div className="sub-total">
                                     <spam>Subtotal</spam>
@@ -70,7 +83,7 @@ const Cart = () => {
                                 <p>Tax and shipping calculated at checkout</p>
                                 <button>Check Out</button>
                                 <Link to='/'><div className='shopping'>
-                                    <HiArrowLeft/>
+                                    <HiArrowLeft />
                                     <span>Continue shopping</span>
                                 </div></Link>
                             </div>
