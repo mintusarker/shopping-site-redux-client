@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProduct, getProducts } from '../features/products/ProductSlice';
 
 const ProductList = () => {
 
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
+    const product = useSelector((state) => state.products.products)
+    // console.log(product);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => setProducts(data))
+        dispatch(getProducts())
     }, [])
 
-    const handleDelete = (id) => {
-        fetch(`http://localhost:5000/products/${id}`, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
+    // const handleDelete = (id) => {
+    //     fetch(`http://localhost:5000/products/${id}`, {
+    //         method: "DELETE"
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => console.log(data))
+    // }
+
+
+    const handleDelete = () => {
+          dispatch(deleteProduct(product._id))
     }
+
+
     return (
         <div>
-            <p className='text-xl font-bold ml-10 my-5 text-red-600'>Total product:{products?.length}</p>
+            <p className='text-xl font-bold ml-10 my-5 text-red-600'>Total product:{product?.length}</p>
             <div className="overflow-x-auto">
                 <table className="table w-ful">
                     <thead className='text-red-800'>
@@ -38,7 +47,7 @@ const ProductList = () => {
                     </thead>
                     <tbody>
                         {
-                            products.map((p, i) => <tr>
+                            product.map((p, i) => <tr>
                                 <th>{i + 1}</th>
                                 <td>
                                     <div className="avatar">
@@ -54,7 +63,7 @@ const ProductList = () => {
                                 <td className='font-semibold text'>{p?.price} Tk.</td>
                                 <td><button className="btn btn-sm btn-success">Edit</button>
                                 </td>
-                                <td><button onClick={() => handleDelete(p?._id)} className="btn btn-sm btn-warning">Remove</button>
+                                <td><button onClick={() => dispatch(deleteProduct(p?._id))} className="btn btn-sm btn-warning">Remove</button>
                                 </td>
                             </tr>)
                         }
