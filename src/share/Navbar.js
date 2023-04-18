@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../features/auth/authSlice';
 import auth from '../firebase/Firebase.config';
 import { FaShoppingCart } from "react-icons/fa";
+import './Navbar.css'
 
 const Navbar = () => {
     const { email } = useSelector((state) => state.auth);
@@ -39,7 +40,7 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className="navbar bg-base-100 px-16 justify-between">
+        <div className="navbar bg-black text-white px-16 justify-between">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost md:hidden lg:hidden">

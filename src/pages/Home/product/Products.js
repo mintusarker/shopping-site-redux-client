@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../../features/products/ProductSlice';
 import ProductCart from './ProductCart';
@@ -14,7 +14,7 @@ const Products = () => {
     }, [dispatch])
 
     return (
-        <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 p-16 mx-auto'>
+        <div className='mt-16 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 p-16 mx-auto'>
             {
                 products?.map(product => <ProductCart
                     key={product._id}
