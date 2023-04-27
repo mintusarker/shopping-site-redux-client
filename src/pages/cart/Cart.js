@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HiArrowLeft } from "react-icons/hi2";
 import './Cart.css'
-import { addToCart, clearCart, decreaseCartItem, removeFromCart } from '../../features/products/CartSlice';
+import { addToCart, clearCart, decreaseCartItem, getTotal, removeFromCart } from '../../features/products/CartSlice';
 
 
 const Cart = () => {
     const cart = useSelector(state => state.cart)
     // console.log(cart);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getTotal())
+    }, [cart, dispatch])
 
     const handleRemoveFromCart = (cartItem) => {
         dispatch(removeFromCart(cartItem))
@@ -59,7 +63,7 @@ const Cart = () => {
                                         <div>
                                             <h3>{cartItem.name}</h3>
                                             <p>{cartItem.category}</p>
-                                            <button onClick={() => handleRemoveFromCart(cartItem)}>Remove</button>
+                                            <button className='remove' onClick={() => handleRemoveFromCart(cartItem)}>Remove</button>
                                         </div>
                                     </div>
                                     <div className='product-price'>${cartItem.price}</div>
@@ -80,11 +84,11 @@ const Cart = () => {
                                     <spam>Subtotal</spam>
                                     <span className='amount'>${cart.cartTotalAmount}</span>
                                 </div>
-                                <p>Tax and shipping calculated at checkout</p>
-                                <button>Check Out</button>
+                                {/* <p>Tax and shipping calculated at checkout</p>
+                                <button>Check Out</button> */}
                                 <Link to='/'><div className='shopping'>
                                     <HiArrowLeft />
-                                    <span>Continue shopping</span>
+                                    <span className='border-2 bg-slate-400 p-1 m-3 hover:bg-red-400'>Continue shopping</span>
                                 </div></Link>
                             </div>
                         </div>

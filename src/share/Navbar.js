@@ -9,6 +9,9 @@ import './Navbar.css'
 
 const Navbar = () => {
     const { email } = useSelector((state) => state.auth);
+    const { cartTotalQuantity } = useSelector((state) => state.cart);
+    console.log(cartTotalQuantity);
+
     const dispatch = useDispatch();
 
 
@@ -34,7 +37,7 @@ const Navbar = () => {
         }
         <li><Link to='/cart'><div className='flex'>
             <FaShoppingCart className='h-10 w-auto -m-2 text-red-400' />
-            <span className='font-semibold -ml-3 -mt-1 rounded-full content-center items-center'>0</span>
+            <span className='font-semibold -ml-3 -mt-1 rounded-full content-center items-center'>{cartTotalQuantity}</span>
         </div>
         </Link></li>
     </React.Fragment>

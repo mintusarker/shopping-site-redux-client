@@ -12,7 +12,7 @@ const ProductCart = ({ product }) => {
 
     const handleAddToCart =()=> {
           dispatch(addToCart(product));
-        //   navigate('/cart')
+          navigate('/cart')
     }
     return (
         <div>
