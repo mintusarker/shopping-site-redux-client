@@ -5,14 +5,24 @@ import { deleteProduct, getProducts } from '../features/products/ProductSlice';
 const ProductList = () => {
 
     const dispatch = useDispatch();
-    const product = useSelector((state) => state.products.products)
-    // console.log(product);
+    const {products}  = useSelector((state) => state.products.products)
+    console.log(products);
 
     useEffect(() => {
         dispatch(getProducts())
     }, [])
 
-    // const handleDelete = (id) => {
+
+    //     const [product , setProduct] = useState()
+
+    //     useEffect(() => {
+    //         fetch('http://localhost:5000/product')
+    //         .then(res => res.json())
+    //         .then(data => setProduct(data))
+    // }, [])
+
+
+    // // const handleDelete = (id) => {
     //     fetch(`http://localhost:5000/products/${id}`, {
     //         method: "DELETE"
     //     })
@@ -22,13 +32,13 @@ const ProductList = () => {
 
 
     const handleDelete = () => {
-          dispatch(deleteProduct(product._id))
+        dispatch(deleteProduct(products._id))
     }
 
 
     return (
         <div>
-            <p className='text-xl font-bold ml-10 my-5 text-red-600'>Total product:{product?.length}</p>
+            <p className='text-xl font-bold ml-10 my-5 text-red-600'>Total product:{products?.length}</p>
             <div className="overflow-x-auto">
                 <table className="table w-ful">
                     <thead className='text-red-800'>
@@ -47,7 +57,7 @@ const ProductList = () => {
                     </thead>
                     <tbody>
                         {
-                            product.map((p, i) => <tr>
+                            products?.map((p, i) => <tr>
                                 <th>{i + 1}</th>
                                 <td>
                                     <div className="avatar">

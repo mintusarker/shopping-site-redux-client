@@ -40,7 +40,7 @@ const Navbar = () => {
     </React.Fragment>
 
     return (
-        <div className="navbar bg-black text-white px-16 justify-between">
+        <div className="sticky top-0 z-50 navbar bg-black text-white px-16 justify-between">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost md:hidden lg:hidden">
